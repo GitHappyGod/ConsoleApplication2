@@ -20,14 +20,14 @@ bool win;
 
 
 void Puzzle() {
-	locateObject(img00, scene1, X[1], Y[0]);
-	locateObject(img01, scene1, X[2], Y[0]);
-	locateObject(img02, scene1, X[1], Y[2]);
-	locateObject(img10, scene1, X[2], Y[0]);
-	locateObject(img11, scene1, X[0], Y[0]);
-	locateObject(img12, scene1, X[1], Y[1]);
-	locateObject(img20, scene1, X[0], Y[1]);
-	locateObject(img21, scene1, X[0], Y[2]);
+	locateObject(img00, scene2, X[1], Y[0]);
+	locateObject(img01, scene2, X[2], Y[0]);
+	locateObject(img02, scene2, X[1], Y[2]);
+	locateObject(img10, scene2, X[2], Y[0]);
+	locateObject(img11, scene2, X[0], Y[0]);
+	locateObject(img12, scene2, X[1], Y[1]);
+	locateObject(img20, scene2, X[0], Y[1]);
+	locateObject(img21, scene2, X[0], Y[2]);
 }
 
 void endGame(bool success) {
@@ -85,7 +85,15 @@ void mouseCallback(ObjectID object, int x, int y, MouseAction action) {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			if (object == img[i][j]) {
-				
+				if (action == MOUSE_DRAG_LEFT) {
+				}
+				else if (action == MOUSE_DRAG_RIGHT) {
+				}
+				else if (action == MOUSE_DRAG_UP) {
+				}
+				else if (action == MOUSE_DRAG_DOWN) {
+
+				}
 			}
 		}
 	}
@@ -100,16 +108,27 @@ int main() {
 	scene2 = createScene("고양이 퍼즐", "공백.png");
 	startButton = createObject("시작 버튼", "start.png", scene1, 900, 500, true);
 	endButton = createObject("종료 버튼", "end.png", scene1, 900, 450, true);
-	for (int i = 0; i < 3; i++) {
-		for (int k = 0; k < 3; k++) {
-			h++;
-			char image[50] = "";
-			sprintf_s(image, "output\\cat_00%d.jpg", h);
-			printf("%d %d %d \n", h, X[k], Y[i]);
-			img[i][k] = createObject("야옹이", image, scene2, X[k], Y[i], false);
-			scaleObject(img[i][k], 0.5f);
-		}
-	}
+
+	img00 = createObject("야옹이", "output\\cat_001.jpg", scene2, X[0], Y[0], true);
+	scaleObject(img00, 0.5f);
+	img01 = createObject("야옹이", "output\\cat_002.jpg", scene2, X[1], Y[0], true);
+	scaleObject(img01, 0.5f);
+	img02 = createObject("야옹이", "output\\cat_003.jpg", scene2, X[2], Y[0], true);
+	scaleObject(img02, 0.5f);
+
+	img10 = createObject("야옹이", "output\\cat_004.jpg", scene2, X[0], Y[1], true);
+	scaleObject(img10, 0.5f);
+	img11 = createObject("야옹이", "output\\cat_005.jpg", scene2, X[1], Y[1], true);
+	scaleObject(img11, 0.5f);
+	img12 = createObject("야옹이", "output\\cat_006.jpg", scene2, X[2], Y[1], true);
+	scaleObject(img12, 0.5f);
+
+	img20 = createObject("야옹이", "output\\cat_007.jpg", scene2, X[0], Y[2], true);
+	scaleObject(img20, 0.5f);
+	img21 = createObject("야옹이", "output\\cat_008.jpg", scene2, X[1], Y[2], true);
+	scaleObject(img21, 0.5f);
+	img22 = createObject("야옹이", "output\\cat_009.jpg", scene2, X[2], Y[2], true);
+	scaleObject(img22, 0.5f);
 
 	timer1 = createTimer();
 	showTimer(timer1);
